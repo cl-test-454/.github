@@ -1,0 +1,13 @@
+{
+  "name": "cl-test-454 bicep-drift",
+  "description": "Weekday drift detection with what-if; opens issues labelled drift.",
+  "iconName": "bicep",
+  "categories": [
+    "Deployment",
+    "Bicep"
+  ],
+  "filePatterns": [
+    "^bicepconfig\\.json$",
+    "\\.bicep$"
+  ]
+}

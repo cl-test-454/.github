@@ -1,0 +1,39 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+    paths: ["infra/**", "bicepconfig.json"]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Single environment to deploy
+        type: choice
+        options: [dev, test, prod]
+      allow-destructive:
+        description: Allow deletes / stack deleteResources (still needs environment approval)
+        type: boolean
+        default: false
+
+permissions: {}
+
+jobs:
+  dev:
+    if: ${{ github.event_name == 'push' || inputs.environment == 'dev' }}
+    uses: "cl-test-454/platform-workflows/.github/workflows/bicep-deploy.yml@v1"
+    permissions: { contents: read, id-token: write }
+    with: { environment: dev, allow-destructive: "${{ inputs.allow-destructive == true }}" }
+
+  test:
+    needs: dev
+    if: ${{ always() && ((github.event_name == 'push' && needs.dev.result == 'success') || inputs.environment == 'test') }}
+    uses: "cl-test-454/platform-workflows/.github/workflows/bicep-deploy.yml@v1"
+    permissions: { contents: read, id-token: write }
+    with: { environment: test, allow-destructive: "${{ inputs.allow-destructive == true }}" }
+
+  prod:
+    needs: test
+    if: ${{ always() && ((github.event_name == 'push' && needs.test.result == 'success') || inputs.environment == 'prod') }}
+    uses: "cl-test-454/platform-workflows/.github/workflows/bicep-deploy.yml@v1"
+    permissions: { contents: read, id-token: write }
+    with: { environment: prod, deny-settings-mode: denyDelete, allow-destructive: "${{ inputs.allow-destructive == true }}" }

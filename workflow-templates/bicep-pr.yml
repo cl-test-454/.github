@@ -1,0 +1,20 @@
+name: pr
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions: {}
+
+jobs:
+  validate:
+    uses: "cl-test-454/platform-workflows/.github/workflows/bicep-validate.yml@v1"
+    permissions: { contents: read, id-token: write, security-events: write }
+
+  whatif:
+    needs: validate
+    uses: "cl-test-454/platform-workflows/.github/workflows/bicep-whatif.yml@v1"
+    permissions: { contents: read, id-token: write, pull-requests: write }
+    with:
+      environments: '["dev","test","prod"]'
+      allow-destructive: ${{ contains(github.event.pull_request.labels.*.name, 'allow-destructive') }}

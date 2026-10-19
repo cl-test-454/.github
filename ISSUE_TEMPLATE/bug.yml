@@ -1,0 +1,25 @@
+name: Bug
+description: Something in a workflow, module or agent is broken
+labels: [bug]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [platform-workflows, bicep-modules, ai-platform, other]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version / ref in use
+      placeholder: "platform-workflows@v1.2.0, br/platform:storage-account:1.0.0, ai-platform v1.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened and what did you expect?
+      description: Link the failing run. Do not paste secrets, tenant or subscription IDs.
+    validations:
+      required: true

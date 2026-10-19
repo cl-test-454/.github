@@ -1,0 +1,13 @@
+{
+  "name": "cl-test-454 bicep-deploy",
+  "description": "Deploy Bicep dev \u2192 test \u2192 prod with environment approvals and deployment stacks.",
+  "iconName": "bicep",
+  "categories": [
+    "Deployment",
+    "Bicep"
+  ],
+  "filePatterns": [
+    "^bicepconfig\\.json$",
+    "\\.bicep$"
+  ]
+}

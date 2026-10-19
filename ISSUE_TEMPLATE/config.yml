@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Platform engineering channel
+    url: https://teams.microsoft.com/
+    about: Questions about pipelines, modules or Copilot agents.

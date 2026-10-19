@@ -1,0 +1,13 @@
+{
+  "name": "cl-test-454 bicep-pr",
+  "description": "Validate Bicep and post what-if per environment on pull requests (org platform-workflows@v1).",
+  "iconName": "bicep",
+  "categories": [
+    "Deployment",
+    "Bicep"
+  ],
+  "filePatterns": [
+    "^bicepconfig\\.json$",
+    "\\.bicep$"
+  ]
+}

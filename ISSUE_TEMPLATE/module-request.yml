@@ -1,0 +1,29 @@
+name: Module request
+description: Request a new org Bicep module or approval to use a public AVM module directly
+labels: [module-request]
+body:
+  - type: input
+    id: avm
+    attributes:
+      label: AVM module
+      placeholder: avm/res/web/site
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Request type
+      options: [New org wrapper module, Add to approved public AVM list]
+    validations:
+      required: true
+  - type: textarea
+    id: defaults
+    attributes:
+      label: Org defaults needed
+      description: Private endpoint, diagnostics, identity, SKU, locks. Why can't an existing module be used?
+    validations:
+      required: true
+  - type: input
+    id: workload
+    attributes:
+      label: First consuming workload
