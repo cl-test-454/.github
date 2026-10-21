@@ -10,4 +10,4 @@
 | `profile/README.md` | public org profile (member-only profile lives in `.github-private/profile/`) |
 
 If your enterprise uses Enterprise Managed Users (no public repos), make this repo internal: workflow
-templates still work for internal/private repos, but PR/issue templates must then ship per repo (bicep-template already does).
+templates still work for internal/private repos, but PR/issue templates must then ship per repo (app-template already does).
