@@ -14,7 +14,7 @@
 ## What-if
 <!-- Filled from bicep-whatif comments. Any Delete needs the allow-destructive label. -->
 | Environment | Create | Modify | Delete | Run |
-|---|---|---|---|---|
+| ----------- | ------ | ------ | ------ | --- |
 
 ## Risk and rollout
 <!-- Blast radius, prod parameter changes, RBAC/network exposure, rollback plan. -->
